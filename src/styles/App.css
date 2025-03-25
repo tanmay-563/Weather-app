@@ -1,0 +1,52 @@
+/* App Container */
+.app {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+/* Search Bar */
+.search-bar {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #E2A3C7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Weather Card */
+.weather-card {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #A8DCD9;
+  border: 1px solid #E2A3C7;
+  border-radius: 8px;
+  display: inline-block;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Error Message */
+.error {
+  color: red;
+  margin-top: 10px;
+}

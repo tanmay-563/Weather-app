@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import axios from "axios";
+import SearchBar from "./components/SearchBar";
+import WeatherCard from "./components/WeatherCard";
+import "./styles/App.css";
 
-function App() {
+const App = () => {
+  const [weatherData, setWeatherData] = useState(null);
+  const [error, setError] = useState("");
+
+  // Fetch Weather Data
+  const getWeatherData = async (city) => {
+    const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+
+    try {
+      const response = await axios.get(url);
+      setWeatherData(response.data);
+      setError("");
+    } catch (err) {
+      setError("City not found. Please try again.");
+      setWeatherData(null);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>🌤️ Weather Dashboard</h1>
+      <SearchBar onSearch={getWeatherData} />
+      {error && <p className="error">{error}</p>}
+      {weatherData && <WeatherCard data={weatherData} />}
     </div>
   );
-}
+};
 
 export default App;
