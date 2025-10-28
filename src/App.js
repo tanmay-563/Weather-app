@@ -11,7 +11,7 @@ const App = () => {
   // Fetch Weather Data
   const getWeatherData = async (city) => {
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    const url = `YOUR API KEY ${city}&appid=${API_KEY}&units=metric`;
 
     try {
       const response = await axios.get(url);
